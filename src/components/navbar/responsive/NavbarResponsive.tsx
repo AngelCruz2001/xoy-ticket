@@ -4,10 +4,10 @@ import { NavbarContent } from './NavbarContent'
 type Props = {
     setIsOpen: (isOpen: boolean) => void
 }
-export const NavbarResponsive = ({ }: Props) => {
+export const NavbarResponsive = ({setIsOpen }: Props) => {
     return (
         <div className='navbar'>
-            <NavbarContent />
+            <NavbarContent setIsOpen={setIsOpen} />
         </div>
     )
 }
