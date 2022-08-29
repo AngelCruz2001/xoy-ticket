@@ -13,7 +13,7 @@
     @include mixins.respond(from-tab-land) {
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(1, 1fr);
-        padding: 3rem 16rem;
+        padding: 3rem 5rem;
     }
 
     &__brand {
@@ -21,7 +21,8 @@
         justify-content: center;
         align-items: center;
         @include mixins.respond(from-tab-land) {
-            // width: 25rem;
+            
+        
         }
         img {
             width: 100%;
@@ -33,9 +34,19 @@
         position: absolute;
         left: 0;
         @include mixins.respond(from-tab-land) {
-            height: 50rem;
+            height: 65rem;
             right: -12rem;
             left: initial;
+            top: -35rem;
+        }
+    }
+
+
+    .x2 {
+        @include mixins.respond(from-tab-land) {
+            position: absolute;
+            height: 50rem;
+            left: -5rem;
             top: -25rem;
         }
     }

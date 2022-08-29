@@ -1,4 +1,4 @@
-import { Hero, Navbar, Searchbar, Title, Match, Team, Carousel, Brands } from 'components';
+import { Hero, Navbar, Searchbar, Title, Match, Team, Carousel, Brands, Footer } from 'components';
 import calendarIcon from "assets/icons/calendar.svg";
 import ticketIcon from "assets/icons/tickets.svg";
 import { useWindowDimensions } from './hooks/useWindowDimensions';
@@ -26,7 +26,7 @@ export const App = () => {
 
       <Brands />
 
-
+      <Footer />
 
     </div>
   )

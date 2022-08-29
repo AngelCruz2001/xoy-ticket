@@ -20,6 +20,10 @@
         width: 100%;
         justify-content: space-between;
 
+        @include mixins.respond(from-tab-land) {
+            align-items: center;
+        }
+
         &__item {
             display: none;
             @include mixins.respond(from-tab-land) {

@@ -34,6 +34,11 @@ export const Brands = () => {
             </div>
 
             <img src={ width < 900 ? xBrands : xBrandsDesk} alt="" className='x' />
+
+            {
+                width > 900 &&
+                <img src={xBrandsDesk} alt="" className='x2' />
+            }
         </div>
     )
 }

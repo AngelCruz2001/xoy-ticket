@@ -1,0 +1,99 @@
+@use "../../styles/colors";
+
+.footer {
+    background-color: colors.$secondary;
+    padding: 5rem 10%;
+    position: relative;
+    overflow: hidden;
+    .imgContainer {
+        width: 14rem;
+        margin-bottom: 2rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .info {
+        font-family: "Outfit", sans-serif;
+        color: colors.$color-white;
+        margin-bottom: 5rem;
+
+        h2 {
+            color: colors.$primary;
+            font-size: calc(1rem + 6vw);
+            margin-bottom: 0.3rem;
+        }
+
+        p {
+            font-size: calc(1rem + 2vw);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        span {
+            font-size: calc(1rem + 4vw);
+            font-weight: 700;
+        }
+    }
+
+    .links {
+        font-size: calc(1rem + 3vw);
+        margin-bottom: 15rem;
+        h3 {
+            color: colors.$color-white;
+            font-size: 2.1rem;
+            margin-bottom: 1.5rem;
+            text-decoration: underline;
+        }
+    }
+
+    .social {
+        margin-bottom: 40rem;
+        p {
+            font-size: calc(1rem + 2vw);
+            color: colors.$color-white;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .social__icons {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+            margin-bottom: 2rem;
+
+            img {
+                width: 6rem;
+                height: 6rem;
+                object-fit: cover;
+            }
+        }
+    }
+    .copyright {
+        position: absolute;
+        height: 50rem;
+        width: 75%;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(90deg, #ff00b7 10.83%, #ff6d00 82.86%);
+        -webkit-clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        p {
+            font-size: calc(0.5rem + 3vw);
+            color: colors.$color-white;
+            text-align: right;
+        }
+        padding: 2rem;
+    }
+
+    .xFooter {
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+    }
+}
