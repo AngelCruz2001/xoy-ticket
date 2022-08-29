@@ -5,12 +5,12 @@
     display: flex;
     overflow-y: scroll;
     padding: 0 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
 
     .itemTeam {
         width: 50rem;
         margin-right: 2rem;
-
+        margin-bottom: 2rem;
         &:last-of-type {
             margin-right: 0;
         }

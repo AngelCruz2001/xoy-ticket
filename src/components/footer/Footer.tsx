@@ -38,7 +38,7 @@ export const Footer = () => {
                         Todos los Derechos Reservados</p>
                 </div>
 
-                <img src={x} alt="" className="xFooter"/>
+                <img src={x} alt="" className="xFooter" />
             </div>
         </>
     )

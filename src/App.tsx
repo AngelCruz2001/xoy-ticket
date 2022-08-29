@@ -17,6 +17,11 @@ export const App = () => {
       <Title title='PRÓXIMOS PARTIDOS' icon={calendarIcon} />
       <section>
         <Match />
+        <Match />
+        <Match />
+        <Match />
+        <Match />
+        <Match />
       </section>
       <Title title='TICKETS POR EQUIPOS' icon={ticketIcon} />
 
