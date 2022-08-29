@@ -1,6 +1,5 @@
 .searchbarContainer {
     display: flex;
-    min-width: 35rem;
     padding: 2rem;
 
     &.background {
@@ -8,7 +7,6 @@
 
         .searchbar {
             background-color: #ae0c3d;
-           
         }
     }
     .searchbar {
@@ -29,6 +27,8 @@
             margin: 0%;
             padding: 0%;
             font-size: 1.5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
             &::placeholder {
                 color: white;
             }

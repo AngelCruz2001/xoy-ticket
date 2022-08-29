@@ -7,7 +7,11 @@ import brand4 from 'assets/brands/brand4.png'
 import brand5 from 'assets/brands/brand5.png'
 import brand6 from 'assets/brands/brand6.png'
 import xBrands from 'assets/icons/xBrands.svg'
+import xBrandsDesk from 'assets/icons/xBrandsDesk.svg'
+import { useWindowDimensions } from 'hooks/useWindowDimensions'
 export const Brands = () => {
+
+    const { width } = useWindowDimensions();
     return (
         <div className="brandsContainer">
             <div className="brandsContainer__brand">
@@ -29,7 +33,7 @@ export const Brands = () => {
                 <img src={brand5} alt="brand6" />
             </div>
 
-            <img src={xBrands} alt="" className='x' />
+            <img src={ width < 900 ? xBrands : xBrandsDesk} alt="" className='x' />
         </div>
     )
 }

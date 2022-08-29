@@ -133,8 +133,7 @@
 }
 
 @mixin iconTitle {
-    width: 4rem;
-    height: 4rem;
+    width: calc(2rem + 2.5vw);
     margin-right: 3rem;
 }
 @mixin flexCenter {
