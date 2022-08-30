@@ -7,17 +7,17 @@ type Props = {
     setIsOpen: (isOpen: boolean) => void
 }
 
-export const NavbarContent = ({setIsOpen}:Props) => {
+export const NavbarContent = ({ setIsOpen }: Props) => {
     return (
         <div className='content'>
             <div className='content__icons'>
                 <div className='content__icons__icon--logo'
-             
+
                 >
                     <img src={logo} alt="" />
                 </div>
                 <div className='content__icons__icon'
-                      onClick={()=>setIsOpen(false)}
+                    onClick={() => setIsOpen(false)}
                 >
                     <img src={close} alt="" />
                 </div>

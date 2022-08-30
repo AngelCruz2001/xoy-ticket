@@ -4,8 +4,6 @@ import "./Carousel.scss"
 import sld1 from 'assets/sliderFooter/sld1.png'
 export const Carousel = () => {
 
-
-
     return (
         <CarouselProvider
             naturalSlideWidth={300}

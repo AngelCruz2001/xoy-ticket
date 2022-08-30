@@ -7,3 +7,5 @@ export * from './team';
 export * from './carousel';
 export * from './brands';
 export * from './footer';
+export * from './login';
+export * from './ticket';

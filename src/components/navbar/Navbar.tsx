@@ -24,14 +24,14 @@ export const Navbar = () => {
                                 <img src={xoyWhite} alt="Logotipo de la empresa XoyTicket" />
 
                             </div>
-                            <div
+                            {/* <div
                                 className="container__items__hamburger__button"
                                 onClick={() => setIsOpen(!isOpen)}
                             >
                                 <img src={ham} alt="Hamburguer Menu icon" />
-                            </div>
+                            </div> */}
 
-                            <div className="container__items__item">
+                            {/* <div className="container__items__item">
                                 <p>Inicio</p>
 
                             </div>
@@ -46,7 +46,7 @@ export const Navbar = () => {
 
                             <div className="container__items__item--search">
                                 <Searchbar />
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>

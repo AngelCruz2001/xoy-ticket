@@ -9,7 +9,7 @@ export const App = () => {
   return (
     <div style={{ position: 'relative' }}>
       <Navbar />
-      {
+      {/* {
         width < 900 &&
         <Searchbar />
       }
@@ -25,7 +25,14 @@ export const App = () => {
       </section>
       <Title title='TICKETS POR EQUIPOS' icon={ticketIcon} />
 
-      <Team />
+      <Team /> */}
+
+      <form action="">
+        <input type="text" placeholder="Usuario " />
+        <input type="text" placeholder="Contraseña" />
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+   
 
       <Carousel />
 
