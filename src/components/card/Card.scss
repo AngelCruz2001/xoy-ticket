@@ -1,0 +1,6 @@
+@use "../../styles/abstracts/mixins";
+
+.card {
+    @include mixins.card;
+    
+}

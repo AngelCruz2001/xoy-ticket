@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './LoginContainer.scss'
 import logo from '../../assets/xoyTicketWhite.png'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import logoWColor from '../../assets/xoyTicketColorFont.png'
 import { useAppDispatch } from 'hooks/hooks';
 import { startLogin } from 'store/auth';
+import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { RegisterContainer } from './RegisterContainer';
 export const LoginContainer = () => {
+
+
+    const [isRegistered, setIsRegistered] = useState<boolean>(false);
+
 
 
     const dispatch = useAppDispatch();
@@ -13,82 +20,92 @@ export const LoginContainer = () => {
 
             <div className="loginContainer__card">
 
-                <div className="loginContainer__card__leftside">
-                    <h2
-                        className="loginContainer__card__leftside__title"
-                    >
-                        Descarga tus boletos
-                    </h2>
+                {
+                    !isRegistered ?
+                        (
+                            <div className="loginContainer__card__leftside">
 
-                    <p className="loginContainer__card__leftside__subtitle">
-                        Descarga tus boletos en formato PDF facilmente.
-                    </p>
-
-                    <Formik
-                        initialValues={{
-
-                            email: '',
-                            password: ''
-                        }}
-                        validate={values => {
-                            const errors: any = {};
-                            if (!values.email) {
-                                errors.email = 'Requerido';
-                            } else if (
-                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                            ) {
-                                errors.email = 'Tiene que ser un email válido';
-                            }
-
-                            if (!values.password) {
-                                errors.password = 'Requerido';
-                            }
-                            return errors;
-                        }
-                        }
-                        onSubmit={(values, { setSubmitting }) => {
-
-                            dispatch(startLogin({
-                                correo: values.email,
-                                contrasena: values.password
-                            }));
-                        }}
-                    >
-
-                        {({ errors, touched }) => (
-                            <Form>
-                                <div>
-                                    <Field
-                                        name="email"
-                                        placeholder='Introduce tu correo electronico'
-                                        className="input"
-                                    />
-                                    <ErrorMessage name="email" component="span"
-                                        className="error"
-                                    />
+                                <div className="loginContainer__card__leftside__logo">
+                                    <img src={logoWColor}  alt="logo" />
                                 </div>
-                                <div>
+                              
+                                <h2
+                                    className="loginContainer__card__leftside__title"
+                                >
+                                    Descarga tus boletos
+                                </h2>
 
-                                    <Field
-                                        type="password"
-                                        name="password"
-                                        placeholder='Introduce tu contraseña'
-                                        className="input"
-                                    />
-                                    <ErrorMessage name="password" component="span"
-                                        className="error" />
-                                </div>
+                                <p className="loginContainer__card__leftside__subtitle">
+                                    Descarga tus boletos en formato PDF facilmente.
+                                </p>
 
-                                <button type="submit" className="loginContainer__card__leftside__button">
-                                    Iniciar sesión
-                                </button>
-                            </Form>
+                                <Formik
+                                    initialValues={{
+                                        email: '',
+                                        password: '',
+                                    }}
+                                    validationSchema={Yup.object().shape({
+                                        email: Yup.string()
+                                            .email('Email no válido')
+                                            .required('El email es obligatorio'),
+                                        password: Yup.string()
+                                            .required('La contraseña es obligatoria'),
 
-                        )}
-                    </Formik>
+                                    })}
+                                    onSubmit={(values, { setSubmitting }) => {
+
+                                        dispatch(startLogin({
+                                            correo: values.email,
+                                            contrasena: values.password
+                                        }));
+                                    }}
+                                >
+
+                                    {({ errors, touched }) => (
+                                        <Form>
+                                            <div className='field'>
+                                                <Field
+                                                    name="email"
+                                                    placeholder='Introduce tu correo electronico'
+                                                    className="input"
+                                                />
+                                                <ErrorMessage name="email" component="span"
+                                                    className="error"
+                                                />
+                                            </div>
+                                            <div className='field'>
+
+                                                <Field
+                                                    type="password"
+                                                    name="password"
+                                                    placeholder='Introduce tu contraseña'
+                                                    className="input"
+                                                />
+                                                <ErrorMessage name="password" component="span"
+                                                    className="error" />
+                                            </div>
+
+                                            <p onClick={() => {
+                                                setIsRegistered(true)
+                                            }} className="loginContainer__card__leftside__register">¿Todavía no tienes cuenta?</p>
+
+                                            <button type="submit" className="loginContainer__card__leftside__button">
+                                                Iniciar sesión
+                                            </button>
+                                        </Form>
+
+                                    )}
+                                </Formik>
 
 
-                </div>
+                            </div>
+                        )
+                        :
+                        <RegisterContainer setIsRegistered={setIsRegistered} />
+
+                }
+
+
                 <div className="loginContainer__card__rightside">
                     <img src={logo} alt="" />
                 </div>

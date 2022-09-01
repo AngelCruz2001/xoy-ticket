@@ -9,3 +9,6 @@ export * from './brands';
 export * from './footer';
 export * from './login';
 export * from './ticket';
+export * from './card';
+export * from './ticket';
+export * from './table';

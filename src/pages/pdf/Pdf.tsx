@@ -11,7 +11,6 @@ export const Pdf = () => {
         const qrCodeCanvas = document.querySelector('canvas');
         if (qrCodeCanvas) {
             setBase64(qrCodeCanvas.toDataURL());
-            console.log(qrCodeCanvas.toDataURL());
         }
     }, [])
 
@@ -22,6 +21,7 @@ export const Pdf = () => {
                     display: 'none'
                 }
             } />
+
             <Viewer qr={base64} />
         </>
     )

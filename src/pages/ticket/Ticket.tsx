@@ -1,9 +1,18 @@
 import React from 'react'
-import { TicketContainer } from '../../components'
+import { Footer, Navbar, Table, TicketContainer } from 'components'
+
 export const Ticket = () => {
+
   return (
 
-    <TicketContainer />
+    <>
+      <Navbar />
+
+      {/* <TicketContainer /> */}
+      <Table />
+      <Footer />
+
+    </>
 
   )
 }

@@ -4,20 +4,24 @@ interface AuthState {
     status: 'checking' | 'not-authenticated' | 'authenticated';
     errorMessage: string | null;
     user: User | null;
+    token: string | null;
 }
 const initialState: AuthState = {
     status: 'checking',
     user: null,
     errorMessage: null,
+    token: null,
 };
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        login: (state: AuthState, { payload }) => {
+
+        login: (state: AuthState, {payload}  ) => {
             state.status = 'authenticated';
-            state.user = payload;
+            state.user = payload.user;
+            state.token = payload.token;
         },
 
         sendErrorMessage: (state: AuthState, { payload }) => {
@@ -28,6 +32,7 @@ export const authSlice = createSlice({
             state.status = 'not-authenticated';
             state.user = null;
             state.errorMessage = null;
+            state.token = null;
         },
 
         checkingCredentials: (state: AuthState) => {

@@ -9,8 +9,9 @@ import brand5 from 'assets/brands/brand5.png'
 import brand6 from 'assets/brands/brand6.png'
 import xoy from 'assets/xoyTicketColorFont.png'
 import promo from 'assets/pdf/promo.png'
+import { Seat } from "interfaces/seats.resp";
 
-const brands = [brand1, brand2, brand3, brand4, brand5, brand6];
+const brands = [brand2, brand4, brand6, brand5, brand1,];
 const styles = StyleSheet.create({
     page: {
     },
@@ -251,22 +252,22 @@ const styles = StyleSheet.create({
 });
 
 
-export const DocumentPdf = ({ qr }: { qr: string }) => {
+export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) => {
 
-    const dataUser = {
-        name: 'Dayana Labrador Espino',
-        email: 'day@gmail.com',
-        purchaseDate: '8/25/2022 8:24:14 PM',
-        localizator: '7650984663',
-        zone: 'LATERAL',
-        section: 'GENERAL - J',
-        row: '1',
-        seat: '1',
-        type: 'ADULTO',
-        price: '$60.00',
-        charge: '$6.00',
-    }
-
+    // const dataUser = {
+    //     name: 'Dayana Labrador Espino',
+    //     email: 'day@gmail.com',
+    //     purchaseDate: '8/25/2022 8:24:14 PM',
+    //     localizator: '7650984663',
+    //     zone: 'LATERAL',
+    //     section: 'GENERAL - J',
+    //     row: '1',
+    //     seat: '1',
+    //     type: 'ADULTO',
+    //     price: '$60.00',
+    //     charge: '$6.00',
+    // }
+    console.log("Caca")
     return (
         <Document
             title="Boletos"
@@ -317,7 +318,7 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                     </Text>
 
                                     <Text>
-                                        {dataUser.name}
+                                        {dataUser.nombre}
                                     </Text>
                                 </View>
                                 <View style={styles.itemText}>
@@ -333,7 +334,7 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                         Fecha de compra:
                                     </Text>
                                     <Text>
-                                        {dataUser.purchaseDate}
+                                        {dataUser.fecha}
                                     </Text>
                                 </View>
                                 <View style={styles.itemText}>
@@ -341,7 +342,7 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                         Localizador:
                                     </Text>
                                     <Text>
-                                        {dataUser.localizator}
+                                        {dataUser.transaccion}
                                     </Text>
                                 </View>
                             </View>
@@ -367,7 +368,7 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                         Zona:
                                     </Text>
                                     <Text>
-                                        {dataUser.zone}
+                                        {dataUser.zona}
                                     </Text>
                                 </View>
                                 <View style={styles.sectionSeat}>
@@ -376,26 +377,19 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                             Sección:
                                         </Text>
                                         <Text>
-                                            {dataUser.section}
+                                            {dataUser.seccion}
                                         </Text>
                                     </View>
                                     <View style={styles.itemText}>
                                         <Text style={styles.ticketInfoTextTitle}>
-                                            Fila:
+                                            Fila - Asiento:
                                         </Text>
 
                                         <Text>
-                                            {dataUser.row}
+                                            {`${dataUser.fila} - ${dataUser.columna}`}
                                         </Text>
                                     </View>
-                                    <View style={styles.itemText}>
-                                        <Text style={styles.ticketInfoTextTitle}>
-                                            Asiento:
-                                        </Text>
-                                        <Text>
-                                            {dataUser.seat}
-                                        </Text>
-                                    </View>
+
                                 </View>
 
                                 <View style={styles.itemText}>
@@ -403,7 +397,8 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                         Tipo:
                                     </Text>
                                     <Text>
-                                        {dataUser.type}
+                                        {/* {dataUser.tipo} */}
+                                        Adulto
                                     </Text>
                                 </View>
 
@@ -413,7 +408,7 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                             Precio:
                                         </Text>
                                         <Text>
-                                            {dataUser.price}
+                                            {dataUser.importe}
                                         </Text>
                                     </View>
                                     <View style={styles.itemText}>
@@ -421,7 +416,7 @@ export const DocumentPdf = ({ qr }: { qr: string }) => {
                                             Cargo por servicio:
                                         </Text>
                                         <Text >
-                                            {dataUser.charge}
+                                            {dataUser.cargo}
                                         </Text>
                                     </View>
                                 </View>

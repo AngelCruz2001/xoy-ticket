@@ -1,4 +1,4 @@
-import React from 'react'
+import "./Card.scss";
 
 interface CardProps {
     children: React.ReactNode
@@ -6,7 +6,7 @@ interface CardProps {
 
 export const Card = ({ children }: CardProps) => {
     return (
-        <div>
+        <div className='card'>
             {children}
         </div>
     )
