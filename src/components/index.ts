@@ -11,4 +11,4 @@ export * from './login';
 export * from './ticket';
 export * from './card';
 export * from './ticket';
-export * from './table';
+export * from './list';

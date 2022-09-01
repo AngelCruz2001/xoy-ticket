@@ -117,6 +117,11 @@
             margin-bottom: 2rem;
 
             img {
+                @include mixins.respond(from-tab-land) {
+                
+                width: 5rem;
+                height: 5rem;
+                }
                 width: 6rem;
                 height: 6rem;
                 object-fit: cover;

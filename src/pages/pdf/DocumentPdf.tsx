@@ -10,24 +10,52 @@ import brand6 from 'assets/brands/brand6.png'
 import xoy from 'assets/xoyTicketColorFont.png'
 import promo from 'assets/pdf/promo.png'
 import { Seat } from "interfaces/seats.resp";
+import { Boleto, JuegoDatos } from "interfaces/ticket.resp";
+import { VentaDatos } from '../../interfaces/ticket.resp';
+import moment from "moment";
 
-const brands = [brand2, brand4, brand6, brand5, brand1,];
+const brands = [brand2, brand4, brand6, brand1,];
 const styles = StyleSheet.create({
     page: {
     },
     brands: {
         display: 'flex',
         flexDirection: 'row',
-        width: '100%',
-        height: '8%',
+        height: '100%',
+        width: '50%',
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#0026A6',
     },
+    brandContainer: {
+        display: 'flex',
+        width: '100%',
+        height: '6%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#0026A6',
+    },
+    brandsTitle: {
+        fontSize: 15,
+        marginRight: 10,
+        color: '#fff',
+        fontWeight: 'extrabold',
+        textDecoration: 'underline',
+        textDecorationColor: '#fff',
+        textDecorationStyle: 'solid',
+        fontStyle: 'italic',
+
+    },
+    brandsTitleBrand: {
+        fontSize: 15,
+        marginLeft: 10,
+        color: '#fff',
+    },
     body: {
         display: 'flex',
         flexDirection: 'row',
-        height: '45%',
+        height: '40%',
         borderBottom: '1px solid #CECECE',
         borderBottomStyle: 'dashed',
     },
@@ -151,7 +179,7 @@ const styles = StyleSheet.create({
     additional: {
         display: 'flex',
         flexDirection: 'row',
-        height: '40%',
+        height: '47%',
     },
     addleftside: {
         display: 'flex',
@@ -225,10 +253,17 @@ const styles = StyleSheet.create({
         width: '47%',
         height: '100%',
     },
+
     footextleft: {
         color: '#c6c7c7',
         fontSize: '8px',
         width: '200px',
+    },
+
+    footextright: {
+        color: '#c6c7c7',
+        fontSize: 5,
+        fontWeight: 'bold',
     },
     fooTerm: {
         fontWeight: 'bold',
@@ -243,6 +278,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '15%',
+        backgroundColor: '#fff',
+        borderRadius: '5px',
+        padding: 2,
+        paddingHorizontal: 4,
     },
     fooQr: {
         width: '100%',
@@ -252,7 +291,7 @@ const styles = StyleSheet.create({
 });
 
 
-export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) => {
+export const DocumentPdf = ({ qr, dataUser, ventaDatos, juego }: { qr: string, dataUser: Boleto, ventaDatos: VentaDatos, juego: JuegoDatos }) => {
 
     // const dataUser = {
     //     name: 'Dayana Labrador Espino',
@@ -267,7 +306,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
     //     price: '$60.00',
     //     charge: '$6.00',
     // }
-    console.log("Caca")
+    console.log(qr)
     return (
         <Document
             title="Boletos"
@@ -275,17 +314,40 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
             <Page
                 style={styles.page}
             >
-                <View style={styles.brands}> {/* BRANDS */}
-                    {
-                        brands.map((brand, index) => (
-                            <Image
-                                key={index}
-                                src={brand}
-                                style={{
-                                }}
-                            />
-                        ))
-                    }
+                <View style={styles.brandContainer}> {/* BRANDS */}
+
+                    <View style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        width: '50%',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+
+                    }}>
+                        <Text style={styles.brandsTitle}>
+                            Boleto Electrónico
+                        </Text>
+
+                        <Text style={styles.brandsTitleBrand} >
+
+                            xoyticket.mx
+                        </Text>
+
+                    </View>
+
+                    <View style={styles.brands}>
+
+                        {
+                            brands.map((brand, index) => (
+                                <Image
+                                    key={index}
+                                    src={brand}
+                                    style={{
+                                    }}
+                                />
+                            ))
+                        }
+                    </View>
                 </View>
                 <View style={styles.body}>
 
@@ -300,13 +362,13 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                         </View>
                         <View style={styles.vsContainer} >
                             <Text >
-                                CHIHUAHUA FC
+                                {juego.Equipo1}
                             </Text>
                             <Text>
                                 VS
                             </Text>
                             <Text>
-                                CIMARRONES DE SONORA FC
+                                {juego.Equipo2}
                             </Text>
                         </View>
 
@@ -318,7 +380,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                     </Text>
 
                                     <Text>
-                                        {dataUser.nombre}
+                                        {dataUser.Nombre}
                                     </Text>
                                 </View>
                                 <View style={styles.itemText}>
@@ -326,7 +388,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                         Correo:
                                     </Text>
                                     <Text >
-                                        {dataUser.email}
+                                        {dataUser.Email}
                                     </Text>
                                 </View>
                                 <View style={styles.itemText}>
@@ -334,7 +396,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                         Fecha de compra:
                                     </Text>
                                     <Text>
-                                        {dataUser.fecha}
+                                        {moment(ventaDatos.Fecha).format('DD/MM/YYYY')}
                                     </Text>
                                 </View>
                                 <View style={styles.itemText}>
@@ -342,7 +404,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                         Localizador:
                                     </Text>
                                     <Text>
-                                        {dataUser.transaccion}
+                                        {dataUser.Transaccion}
                                     </Text>
                                 </View>
                             </View>
@@ -368,7 +430,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                         Zona:
                                     </Text>
                                     <Text>
-                                        {dataUser.zona}
+                                        {dataUser.Zona}
                                     </Text>
                                 </View>
                                 <View style={styles.sectionSeat}>
@@ -377,7 +439,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                             Sección:
                                         </Text>
                                         <Text>
-                                            {dataUser.seccion}
+                                            {dataUser.Seccion}
                                         </Text>
                                     </View>
                                     <View style={styles.itemText}>
@@ -386,7 +448,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                         </Text>
 
                                         <Text>
-                                            {`${dataUser.fila} - ${dataUser.columna}`}
+                                            {`${dataUser.Fila} - ${dataUser.Columna}`}
                                         </Text>
                                     </View>
 
@@ -408,7 +470,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                             Precio:
                                         </Text>
                                         <Text>
-                                            {dataUser.importe}
+                                            {dataUser.Importe}
                                         </Text>
                                     </View>
                                     <View style={styles.itemText}>
@@ -416,7 +478,7 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                                             Cargo por servicio:
                                         </Text>
                                         <Text >
-                                            {dataUser.cargo}
+                                            {ventaDatos.Cargo}
                                         </Text>
                                     </View>
                                 </View>
@@ -468,7 +530,6 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                         </View>
                     </View>
                 </View>
-
                 <View style={styles.footer}>
 
                     <View style={styles.fooleftside}>
@@ -489,8 +550,21 @@ export const DocumentPdf = ({ qr, dataUser }: { qr: string, dataUser: Seat }) =>
                     </View>
 
                     <View style={styles.foorightside}>
+                        <View style={styles.footextright}>
 
 
+                            <Text style={{ marginTop: 4, marginBottom: 4 }}>
+                                {`El/la aficionado(a) que acuda al inmueble donde se realizará el evento, asume todo el riesgo que implica
+                                estar en el mismo, por lo cual no hará responsable a XoyTicket, el responsable del evento, o afín, por cualquier lesión o menoscabo sufrido que afecte su salud o pertenencias ocurrido dentro de las instalaciones o en sus inmediaciones.`}
+                            </Text>
+                            <Text style={{ marginBottom: 5 }}>
+                                ESTE BOLETO, ASI COMO LA(S) LOCALIDAD(ES) DESCRITA(S) EN EL MISMO NO ESTAN SUJETAS A
+                                CAMBIO O REPOSICION, ESTE DOCUMENTO TIENE VIGENCIA UNA SOLA VEZ.
+                            </Text>
+                            <Text>
+                                **Consulta nuestro aviso de privacidad en la pagina web.
+                            </Text>
+                        </View>
                     </View>
                 </View>
             </Page>

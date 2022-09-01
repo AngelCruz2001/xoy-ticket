@@ -4,12 +4,14 @@ import xoyWhite from "assets/xoyTicketWhite.png"
 import ham from "assets/ham.svg"
 import { Searchbar } from "components/searchbar"
 import { NavbarResponsive } from "./responsive"
-
+import { useAppDispatch } from 'hooks/hooks';
+import { logout } from 'store/auth';
 export const Navbar = () => {
 
 
     const [isOpen, setIsOpen] = useState(false)
-
+    const dispatch = useAppDispatch()
+    
     return (
 
         <>
@@ -24,29 +26,18 @@ export const Navbar = () => {
                                 <img src={xoyWhite} alt="Logotipo de la empresa XoyTicket" />
 
                             </div>
-                            {/* <div
-                                className="container__items__hamburger__button"
-                                onClick={() => setIsOpen(!isOpen)}
-                            >
-                                <img src={ham} alt="Hamburguer Menu icon" />
-                            </div> */}
-
-                            {/* <div className="container__items__item">
-                                <p>Inicio</p>
-
+                            <div onClick={()=>{
+                                dispatch(logout())
+                            }}
+                                style={{
+                                display: "flex",
+                                alignItems: "center",
+                                color: "white",
+                                cursor: "pointer",
+                            }}>
+                            <i className="fa-solid fa-right-from-bracket"></i>
+                            <p>Cerrar sesión</p>
                             </div>
-
-                            <div className="container__items__item">
-                                <p>Eventos</p>
-                            </div>
-
-                            <div className="container__items__item">
-                                <p>Términos y Condiciones</p>
-                            </div>
-
-                            <div className="container__items__item--search">
-                                <Searchbar />
-                            </div> */}
 
                         </div>
                     </div>
