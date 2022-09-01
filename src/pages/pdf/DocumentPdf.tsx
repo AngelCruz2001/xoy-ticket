@@ -1,5 +1,4 @@
 import { Page, Text, View, Document, StyleSheet, Image } from "@react-pdf/renderer";
-
 import baseBack from 'assets/pdf/baseBack.jpeg'
 import brand1 from 'assets/brands/brand1.png'
 import brand2 from 'assets/brands/brand2.png'
