@@ -77,9 +77,9 @@ export const Seats = () => {
                             </div>
 
                             <div className="download">
-                                <PDFDownloadLink document={<DocumentPdf qr={base64} dataUser={seat} />} fileName={`${seat.nombre}.pdf`}>
+                                {/* <PDFDownloadLink document={<DocumentPdf qr={base64} dataUser={seat} />} fileName={`${seat.nombre}.pdf`}>
                                     {({ blob, url, loading, error }) => (base64 !== "" && loading ? 'Cargando documento' : 'Descargar')}
-                                </PDFDownloadLink>
+                                </PDFDownloadLink> */}
                                 {/* <p className='titleSeat' onClick={() => handleDownloadSeat(seat)}>Descargar</p> */}
                             </div>
                         </div>

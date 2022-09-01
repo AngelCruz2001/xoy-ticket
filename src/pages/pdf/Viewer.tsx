@@ -29,13 +29,13 @@ export const Viewer = ({ qr }: { qr: string }) => {
                 alignItems: 'center'
             }}
         >
-            <PDFViewer
+            {/* <PDFViewer
                 width="100%"
                 height="100%"
 
             >
                 <DocumentPdf qr={qr} dataUser={data} />
-            </PDFViewer>
+            </PDFViewer> */}
         </div>
     )
 }

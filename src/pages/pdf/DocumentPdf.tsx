@@ -412,7 +412,7 @@ export const DocumentPdf = ({ qr, dataUser, ventaDatos, juego }: { qr: string, d
                     </View>
                     <View style={styles.body__rightside}>
                         <View style={styles.qrContainer}>
-                            <Image source={{ uri: qr }} />
+                            <Image source={{ uri: qr, method: "GET", body: "", headers: "" }} />
                         </View>
 
                         <View style={styles.ticketInfo}>
@@ -545,7 +545,7 @@ export const DocumentPdf = ({ qr, dataUser, ventaDatos, juego }: { qr: string, d
                             </Text>
                         </View>
                         <View style={styles.fooQrContainer}>
-                            <Image style={styles.fooQr} source={{ uri: qr }} />
+                            <Image style={styles.fooQr} source={{ uri: qr, method: "GET", body: "", headers: "" }} />
                         </View>
                     </View>
 

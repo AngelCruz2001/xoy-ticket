@@ -5,24 +5,24 @@ import { useEffect, useState } from 'react';
 
 export const Pdf = () => {
 
-    const [base64, setBase64] = useState("");
+    // const [base64, setBase64] = useState("");
 
-    useEffect(() => {
-        const qrCodeCanvas = document.querySelector('canvas');
-        if (qrCodeCanvas) {
-            setBase64(qrCodeCanvas.toDataURL());
-        }
-    }, [])
+    // useEffect(() => {
+    //     const qrCodeCanvas = document.querySelector('canvas');
+    //     if (qrCodeCanvas) {
+    //         setBase64(qrCodeCanvas.toDataURL());
+    //     }
+    // }, [])
 
     return (
         <>
-            <QRCode value="hey" style={
+            {/* <QRCode value="hey" style={
                 {
                     display: 'none'
                 }
             } />
 
-            <Viewer qr={base64} />
+            <Viewer qr={base64} /> */}
         </>
     )
 }
