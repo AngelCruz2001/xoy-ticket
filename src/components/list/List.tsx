@@ -39,8 +39,11 @@ export const Table = () => {
   useEffect(() => {
     if (tickets) {
       tickets?.map((ticket, index) => {
-        QRCode.toDataURL(ticket.Transaccion, (err, url) => (setTicketsData(tickets?.map((ticket, index) => ({ ...ticket, qrCode: url })))
-        ))
+        QRCode.toDataURL(ticket.Transaccion,
+          (_: any, url: string) => (
+            setTicketsData(tickets?.map((ticket, index) => ({ ...ticket, qrCode: url }))
+            )
+          ))
       })
     }
   }, [tickets])
@@ -53,14 +56,14 @@ export const Table = () => {
     setLoadingPdfDownload(true)
     // Swal loading
     ticket.boletos.forEach(async (boleto, index) => {
-        const caca = await pdf(<DocumentPdf dataUser={boleto} qr={ticket.qrCode!} juego={ticket.JuegoDatos} ventaDatos={ticket.VentaDatos} />).toBlob();
-        const url = window.URL.createObjectURL(caca);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', boleto.Nombre);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      const caca = await pdf(<DocumentPdf dataUser={boleto} qr={ticket.qrCode!} juego={ticket.JuegoDatos} ventaDatos={ticket.VentaDatos} />).toBlob();
+      const url = window.URL.createObjectURL(caca);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', boleto.Nombre);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     })
     setLoadingPdfDownload(false)
     // Swal.close();

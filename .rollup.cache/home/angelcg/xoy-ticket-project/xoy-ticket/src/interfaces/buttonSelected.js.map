@@ -1,0 +1,1 @@
+{"version":3,"file":"buttonSelected.js","sourceRoot":"","sources":["buttonSelected.ts"],"names":[],"mappings":"","sourcesContent":["export interface ButtonSelected {\n    selected:selectedItem[];\n}\n\nexport interface selectedItem {\n    id:number;\n    selected: boolean;\n}\n    "]}
